@@ -1,0 +1,73 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Připojení k NPMplus",
+        "data": {
+          "host": "Adresa nebo hostname serveru",
+          "port": "Port (admin UI / API)",
+          "username": "E-mailová adresa",
+          "password": "Heslo",
+          "verify_ssl": "Ověřovat SSL certifikát"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Opětovné přihlášení k NPMplus",
+        "data": {
+          "username": "E-mailová adresa",
+          "password": "Heslo"
+        }
+      },
+      "reconfigure": {
+        "title": "Rekonfigurace NPMplus",
+        "data": {
+          "host": "Adresa nebo hostname serveru",
+          "port": "Port (admin UI / API)",
+          "username": "E-mailová adresa",
+          "password": "Heslo",
+          "verify_ssl": "Ověřovat SSL certifikát"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nepodařilo se připojit k NPMplus. Zkontrolujte adresu, port a síťovou dostupnost.",
+      "invalid_auth": "Neplatná e-mailová adresa nebo heslo.",
+      "unknown": "Neočekávaná chyba, zkontrolujte log."
+    },
+    "abort": {
+      "already_configured": "Tato instance NPMplus je již nakonfigurována.",
+      "reauth_successful": "Opětovné přihlášení proběhlo úspěšně.",
+      "reconfigure_successful": "Nastavení připojení k NPMplus bylo aktualizováno."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti NPMplus",
+        "data": {
+          "scan_interval": "Interval aktualizace (sekundy)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "proxy_enabled": { "name": "Povoleno" },
+      "stream_enabled": { "name": "Povoleno" },
+      "dead_host_enabled": { "name": "Povoleno" },
+      "redirection_host_enabled": { "name": "Povoleno" }
+    },
+    "binary_sensor": {
+      "proxy_ssl_enabled": { "name": "SSL povoleno" },
+      "proxy_force_https": { "name": "Vynutit HTTPS" }
+    },
+    "sensor": {
+      "proxy_certificate_expiration": { "name": "Platnost certifikátu" },
+      "proxy_public_url": { "name": "Veřejná URL" },
+      "proxy_local_url": { "name": "Lokální URL" }
+    },
+    "button": {
+      "proxy_renew_certificate": { "name": "Obnovit certifikát" }
+    }
+  }
+}

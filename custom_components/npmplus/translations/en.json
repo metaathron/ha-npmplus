@@ -1,0 +1,73 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to NPMplus",
+        "data": {
+          "host": "Host or IP address",
+          "port": "Port (admin UI / API)",
+          "username": "Email address",
+          "password": "Password",
+          "verify_ssl": "Verify SSL certificate"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate with NPMplus",
+        "data": {
+          "username": "Email address",
+          "password": "Password"
+        }
+      },
+      "reconfigure": {
+        "title": "Reconfigure NPMplus",
+        "data": {
+          "host": "Host or IP address",
+          "port": "Port (admin UI / API)",
+          "username": "Email address",
+          "password": "Password",
+          "verify_ssl": "Verify SSL certificate"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to NPMplus. Check the host, port, and network access.",
+      "invalid_auth": "Invalid email address or password.",
+      "unknown": "Unexpected error, please check the logs."
+    },
+    "abort": {
+      "already_configured": "This NPMplus instance is already configured.",
+      "reauth_successful": "Re-authentication was successful.",
+      "reconfigure_successful": "NPMplus connection settings were updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NPMplus options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "switch": {
+      "proxy_enabled": { "name": "Enabled" },
+      "stream_enabled": { "name": "Enabled" },
+      "dead_host_enabled": { "name": "Enabled" },
+      "redirection_host_enabled": { "name": "Enabled" }
+    },
+    "binary_sensor": {
+      "proxy_ssl_enabled": { "name": "SSL enabled" },
+      "proxy_force_https": { "name": "Force HTTPS" }
+    },
+    "sensor": {
+      "proxy_certificate_expiration": { "name": "Certificate expiration" },
+      "proxy_public_url": { "name": "Public URL" },
+      "proxy_local_url": { "name": "Local URL" }
+    },
+    "button": {
+      "proxy_renew_certificate": { "name": "Renew certificate" }
+    }
+  }
+}
