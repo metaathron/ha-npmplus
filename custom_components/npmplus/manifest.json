@@ -4,8 +4,8 @@
   "codeowners": ["@your-github-username"],
   "config_flow": true,
   "documentation": "https://github.com/your-github-username/ha-npmplus",
-  "issue_tracker": "https://github.com/your-github-username/ha-npmplus/issues",
-  "iot_class": "local_polling",
   "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/your-github-username/ha-npmplus/issues",
   "version": "0.3.0"
 }
