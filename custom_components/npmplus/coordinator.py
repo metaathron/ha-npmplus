@@ -194,6 +194,12 @@ class ServerSummary:
     streams_total: int = 0
     streams_enabled: int = 0
     streams_disabled: int = 0
+    dead_hosts_total: int = 0
+    dead_hosts_enabled: int = 0
+    dead_hosts_disabled: int = 0
+    redirection_hosts_total: int = 0
+    redirection_hosts_enabled: int = 0
+    redirection_hosts_disabled: int = 0
     certificates_expiring_14d: int = 0
     certificates_expiring_7d: int = 0
     certificates_expired: int = 0
@@ -358,7 +364,7 @@ class NPMplusDataUpdateCoordinator(DataUpdateCoordinator[NPMplusData]):
                 certificate_renewable=cert.is_renewable if cert else False,
             )
 
-        summary = _build_summary(proxy_hosts, streams, certificates)
+        summary = _build_summary(proxy_hosts, streams, dead_hosts, redirection_hosts, certificates)
 
         return NPMplusData(
             proxy_hosts=proxy_hosts,
@@ -373,6 +379,8 @@ class NPMplusDataUpdateCoordinator(DataUpdateCoordinator[NPMplusData]):
 def _build_summary(
     proxy_hosts: dict[int, ProxyHostData],
     streams: dict[int, StreamData],
+    dead_hosts: dict[int, DeadHostData],
+    redirection_hosts: dict[int, RedirectionHostData],
     certificates: dict[int, CertificateData],
 ) -> ServerSummary:
     summary = ServerSummary()
@@ -386,6 +394,18 @@ def _build_summary(
     summary.streams_total = len(streams)
     summary.streams_enabled = sum(1 for s in streams.values() if s.enabled)
     summary.streams_disabled = summary.streams_total - summary.streams_enabled
+
+    summary.dead_hosts_total = len(dead_hosts)
+    summary.dead_hosts_enabled = sum(1 for h in dead_hosts.values() if h.enabled)
+    summary.dead_hosts_disabled = summary.dead_hosts_total - summary.dead_hosts_enabled
+
+    summary.redirection_hosts_total = len(redirection_hosts)
+    summary.redirection_hosts_enabled = sum(
+        1 for h in redirection_hosts.values() if h.enabled
+    )
+    summary.redirection_hosts_disabled = (
+        summary.redirection_hosts_total - summary.redirection_hosts_enabled
+    )
 
     now = datetime.now(timezone.utc)
     for cert in certificates.values():
